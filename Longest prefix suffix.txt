@@ -1,0 +1,23 @@
+class Solution{
+  public:		
+	int lps(string s) {
+    vector<int> lps(s.size(), 0);
+    int prev = 0, suf = 1;
+    while (suf < s.size()) {
+        if (s[prev] == s[suf]) {
+            lps[suf] = prev + 1;
+            prev++, suf++;
+        } else {
+          if(prev == 0){
+                lps[suf] = 0;
+                suf++;
+             }else{
+                prev = lps[prev - 1];
+        }
+    }
+    }
+    return lps[s.size() - 1];
+}
+
+
+};
